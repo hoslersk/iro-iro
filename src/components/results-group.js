@@ -1,5 +1,6 @@
 
 import classNames from 'classnames';
+import { startCase } from 'lodash';
 
 import TextExample from './text-example';
 
@@ -16,23 +17,32 @@ export default function ResultsGroup(props) {
 		type,
 	} = props;
 
-	const baseClass = 'results-group',
-				resultsGroupClass = baseClass,
-				wcagResultsClass = `${baseClass}__wcag`;
-
 	return (
-		<div className={resultsGroupClass}>
-			<div className={wcagResultsClass}>
+		<div className="results-group">
+			<div className="results-group__label">
+				{startCase(type)} Text
+			</div>
+			<div className="results-group__wcag">
         <div>
           WCAG AA (≥ {aaThreshold}:1):{' '}
-          <ResultsGroupAssessmentText hasPassingScore={contrastRatio >= aaThreshold} />
+          <ResultsGroupAssessmentText
+						hasPassingScore={contrastRatio >= aaThreshold}
+					/>
         </div>
-        <div>        
+        <div>
   				WCAG AAA (≥ {aaaThreshold}:1):{' '}
-          <ResultsGroupAssessmentText hasPassingScore={contrastRatio >= aaaThreshold} />
+          <ResultsGroupAssessmentText
+						hasPassingScore={contrastRatio >= aaaThreshold}
+					/>
         </div>
 			</div>
-			<TextExample {...{ backgroundColor: backgroundHexValue, foregroundColor: foregroundHexValue, type }} />
+			<TextExample
+				{...{
+					backgroundColor: backgroundHexValue,
+					foregroundColor: foregroundHexValue,
+					type,
+				}}
+			/>
 		</div>
 	);
 }

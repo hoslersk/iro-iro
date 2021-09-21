@@ -1,5 +1,7 @@
 
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 
 import Background from './components/background';
 import Body from './components/body';
@@ -9,6 +11,7 @@ import Footer from './components/footer';
 import Heading from './components/heading';
 import ResultsGroup from './components/results-group';
 import { calculateContrastRatio } from './utils/color';
+
 
 export default function App() {
   const [foregroundHexValue, setForegroundHexValue] = useState('#e6e6e6'),
@@ -25,25 +28,51 @@ export default function App() {
   return (
     <>
       {/* <header></header> */}
-      <Background backgroundColor={backgroundHexValue} foregroundColor={foregroundHexValue} />
+      <Background
+        backgroundColor={backgroundHexValue}
+        foregroundColor={foregroundHexValue}
+      />
       <main>
         <div className="container text-center">
-          <Heading backgroundColor={backgroundHexValue} foregroundColor={foregroundHexValue} />
-          <Body backgroundColor={backgroundHexValue} foregroundColor={foregroundHexValue} />
-          <Card label="Color Contrast Tool">
-            <form onSubmit={e => e.preventDefault()}>
-              <ColorFieldset hexValue={foregroundHexValue} updateHexValue={setForegroundHexValue} type="foreground" />
-              <ColorFieldset hexValue={backgroundHexValue} updateHexValue={setBackgroundHexValue} type="background" />
-              <button className="form__button" onClick={swapHexValues} type="button">
-                Swap Colors
-              </button>
+          <Heading
+            backgroundColor={backgroundHexValue}
+            foregroundColor={foregroundHexValue}
+          />
+          <Body
+            backgroundColor={backgroundHexValue}
+            foregroundColor={foregroundHexValue}
+          />
+          <Card
+            actions={[{
+              icon: <FontAwesomeIcon icon={faExchangeAlt} />,
+              label: 'Swap colors',
+              onClick: swapHexValues,
+            }]}
+            label="Color Contrast Tool">
+            <form onSubmit={e => e.preventDefault()}
+          >
+              <div className="card__section">
+                <ColorFieldset
+                  hexValue={foregroundHexValue}
+                  updateHexValue={setForegroundHexValue}
+                  type="foreground"
+                />
+              </div>
+              <div className="card__section">
+                <ColorFieldset
+                  hexValue={backgroundHexValue}
+                  updateHexValue={setBackgroundHexValue}
+                  type="background"
+                />
+              </div>
             </form>
+            {/*
             <h2 className="sr-only">Results</h2>
             <p className="contrast-ratio" role="status">
               Contrast Ratio: <strong>{contrastRatio}</strong>:1
             </p>
-            <div className="d-flex">
-              <h3>Normal Text</h3>
+            */}
+            <div className="card__section">
               <ResultsGroup
                 {...{
                   aaThreshold: 4.5,
@@ -55,8 +84,7 @@ export default function App() {
                 }}
               />
             </div>
-            <div className="d-flex">
-              <h3>Large Text</h3>
+            <div className="card__section">
               <ResultsGroup
                 {...{
                   aaThreshold: 3.1,

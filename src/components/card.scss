@@ -14,8 +14,10 @@
   &__label {
     color: $card-color;
     font-size: 1rem;
-    text-align: center;
-    margin: 0 4.25rem;
+    margin: 0 7.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &__mock-bar {
@@ -37,6 +39,30 @@
     z-index: 2;
   }
 
+  &__actions {
+    position: absolute;
+    left: 6rem;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 1.25rem;
+  }
+
+  &__action {
+    background-color: rgb(241, 241, 241);
+    outline: none;
+    height: 1.25rem;
+    border: $card-border;
+    border-radius: 0.25rem;
+    color: rgba($card-color, 0.5);
+    transition: color $transition-duration * 0.5 $transition-easing;
+
+    &:hover,
+    &:focus {
+      color: $card-color;
+    }
+  }
+
   &__mock-button {
     height: 0.9rem;
     width: 0.9rem;
@@ -47,15 +73,15 @@
     position: relative;
 
     &--close {
-      background-color: $danger;
+      background-color: $close;
     }
 
     &--minimize {
-      background-color: $warning;
+      background-color: $minimize;
     }
 
     &--maximize {
-      background-color: $success;
+      background-color: $maximize;
       transform: rotate(45deg);
     }
   }
@@ -78,6 +104,22 @@
   &__content {
     background-color: $card-bg;
     border-radius: 0 0 $card-border-radius $card-border-radius;
+    text-align: left;
+  }
+
+  &__section {
     padding: 1rem;
+
+    &:nth-of-type(even) {
+    	background-color: rgb(225, 225, 225);
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 $card-border-radius $card-border-radius;
+    }
+  }
+
+  * + &__section {
+    border-top: $card-border;
   }
 }

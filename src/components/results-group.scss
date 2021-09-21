@@ -2,14 +2,13 @@
 @import '../style/variables';
 
 .results-group {
-	// @media (min-width: 768px) {
-	// 	display: flex;
-	// 	align-items: center;
-	// }
+  &__label {
+    font-size: 1.125rem;
+  }
 
-	// &__wcag {
-	// 	margin-right: auto;
-	// }
+	&__wcag {
+		margin: 1rem 0;
+	}
 
   &__assessment-text {
     &--pass {

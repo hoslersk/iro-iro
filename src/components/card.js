@@ -1,13 +1,14 @@
 
 import { useState } from 'react';
 import classNames from 'classnames';
+import { map } from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import './card.scss';
 
 // @TODO: Add easter eggs when clicking on mock buttons
-export default function Card({ children, label = 'Color Contrast Tool' }) {
+export default function Card({ actions = [], children, label = 'Color Contrast Tool' }) {
   const [isMinimized, setIsMinimized] = useState(false);
 
   const componentClass = classNames(
@@ -31,6 +32,15 @@ export default function Card({ children, label = 'Color Contrast Tool' }) {
             <FontAwesomeIcon className="card__icon" icon={faSort} />
           </div>
         </div>
+        {actions.length && (
+          <div className="card__actions">
+            {map(actions, ({ icon, label, onClick }) => (
+              <button className="card__action" key={icon} onClick={onClick} type="button">
+                {icon}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="card__label">
           Color Contrast Tool
         </div>

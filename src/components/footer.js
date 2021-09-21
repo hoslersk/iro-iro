@@ -5,7 +5,7 @@ import './footer.scss';
 export default function Footer({ backgroundColor, foregroundColor }) {
   return (
     <footer className="footer">
-      <div className="container" style={{ color: backgroundColor }}>
+      <div className="container" style={{ color: backgroundColor, textShadow: `0.125rem 0.125rem 0 ${foregroundColor}` }}>
         Created by{' '}
         <a
           className="footer__link"
