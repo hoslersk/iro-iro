@@ -1,0 +1,50 @@
+
+@import '../style/variables';
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 0;
+
+  .container,
+  &__link-text {
+    transition: color $transition-duration $transition-easing;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+    font-weight: 700;
+  }
+
+  &__link:hover &__link-text--highlighted,
+  &__link:focus &__link-text--hightlighted {
+    opacity: 1;
+  }
+
+  &__link:hover &__link-highlight,
+  &__link:focus &__link-highlight {
+    transform: scale(1, 1);
+  }
+
+  &__link-text {
+    &--highlighted {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transition: opacity $transition-duration * 0.5 $transition-easing;
+    }
+  }
+
+  &__link-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: scale(1, 0);
+    transition: transform $transition-duration * 0.5 $transition-easing;
+  }
+}

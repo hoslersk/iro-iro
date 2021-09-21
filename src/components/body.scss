@@ -1,0 +1,7 @@
+
+@import '../style/variables';
+
+.body {
+  margin: 0 0 1.5rem;
+  transition: color $transition-duration $transition-easing;
+}

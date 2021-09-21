@@ -1,0 +1,23 @@
+
+@import '../style/variables';
+
+.results-group {
+	// @media (min-width: 768px) {
+	// 	display: flex;
+	// 	align-items: center;
+	// }
+
+	// &__wcag {
+	// 	margin-right: auto;
+	// }
+
+  &__assessment-text {
+    &--pass {
+      color: $success;
+    }
+
+    &--fail {
+      color: $danger;
+    }
+  }
+}

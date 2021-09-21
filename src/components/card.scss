@@ -1,0 +1,83 @@
+@import '../style/variables';
+
+.card {
+  border-radius: $card-border-radius;
+  border: $card-border;
+  filter: drop-shadow(0.5rem 0.5rem 1rem rgba($black, 0.3));
+  transition: transform $transition-duration $transition-easing;
+  margin-bottom: 1rem;
+
+  &--minimized {
+    transform: translate(-100%, 125%) scale(0) rotateX(-10deg);
+  }
+
+  &__label {
+    color: $card-color;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0 4.25rem;
+  }
+
+  &__mock-bar {
+    background-image: $card-header-bg;
+    border-radius: $card-border-radius $card-border-radius 0 0;
+    border-bottom: $card-border;
+    padding: 0.5rem;
+    position: relative;
+  }
+
+  &__mock-buttons {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1rem;
+    margin: auto 0;
+    display: flex;
+    height: 0.9rem;
+    z-index: 2;
+  }
+
+  &__mock-button {
+    height: 0.9rem;
+    width: 0.9rem;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-right: 0.6rem;
+    display: block;
+    position: relative;
+
+    &--close {
+      background-color: $danger;
+    }
+
+    &--minimize {
+      background-color: $warning;
+    }
+
+    &--maximize {
+      background-color: $success;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__mock-buttons:hover &__icon {
+    opacity: 0.6;
+  }
+
+  &__icon {
+    font-size: 0.6rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    opacity: 0;
+  }
+
+  &__content {
+    background-color: $card-bg;
+    border-radius: 0 0 $card-border-radius $card-border-radius;
+    padding: 1rem;
+  }
+}

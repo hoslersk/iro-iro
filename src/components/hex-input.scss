@@ -1,0 +1,19 @@
+
+@import '../style/variables';
+
+.hex-input {
+  &__input {
+    margin-right: 0.5rem;
+  }
+
+  &__help-text {
+    color: $danger;
+    display: inline-block;
+    visibility: hidden;
+    font-size: 0.875rem;
+
+    &--active {
+      visibility: visible;
+    }
+  }
+}

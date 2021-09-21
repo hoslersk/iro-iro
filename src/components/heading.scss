@@ -1,0 +1,9 @@
+
+@import '../style/variables';
+
+.heading {
+  margin: 0 0 0.25rem;
+  padding-top: 0.5rem;
+  font-size: 3rem;
+  transition: color $transition-duration $transition-easing;
+}

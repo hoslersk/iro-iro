@@ -1,0 +1,15 @@
+
+@import '../style/variables';
+
+.text-example {
+	padding: 1rem;
+	text-align: center;
+	border: $border-style;
+	border-radius: 0.5rem;
+	transition: background-color $transition-duration $transition-easing, color $transition-duration $transition-easing;
+
+	&--large {
+		font-weight: 700;
+		font-size: 1.167rem;
+	}
+}

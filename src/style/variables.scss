@@ -1,0 +1,27 @@
+
+// Colors
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+
+$success: rgb(87, 192, 56);
+$warning: rgb(255, 180, 42);
+$danger: rgb(255, 87, 79);
+
+
+// Borders
+$border-width: 1px;
+$border-color: rgb(161, 161, 161);
+$border-style: $border-width solid $border-color;
+
+
+// Cards
+$card-border: $border-style;
+$card-color: rgb(98, 98, 98);
+$card-bg: rgb(233, 233, 233);
+$card-header-bg: linear-gradient(rgb(225, 225, 225), rgb(205, 205, 205));
+$card-border-radius: 0.5rem;
+
+
+// Transitions
+$transition-duration: 0.5s;
+$transition-easing: ease-in-out;
