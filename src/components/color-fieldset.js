@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { startCase, sum, values } from 'lodash'; // @TODO: use lodash-es
 
 
@@ -14,10 +14,6 @@ export default function ColorFieldset({ hexValue, updateHexValue, type }) {
 	const [userInputValue, setUserInputValue] = useState(hexValue);
 
 	const [hasError, setHasError] = useState(false);
-	//
-	// const textInputValue = useMemo(() => {
-	// 	setUserInputValue(hexValue);
-	// }, [hexValue]);
 
   const baseClass = 'color-fieldset';
 	const colorFieldsetClass = baseClass;
@@ -45,6 +41,10 @@ export default function ColorFieldset({ hexValue, updateHexValue, type }) {
 		}
 	};
 
+	useEffect(() => {
+		setUserInputValue(hexValue);
+	}, [hexValue]);
+
 	const rgbSum = sum(values(rgbValue));
 
 	const isBlack = rgbSum === 0;
@@ -62,7 +62,7 @@ export default function ColorFieldset({ hexValue, updateHexValue, type }) {
 
 	const updateLightness = e => {
 		const newLuminosity = e.target.value,
-					adjustedHslValue = {...hslValue, ...{ l: newLuminosity }},
+					adjustedHslValue = { ...hslValue, ...{ l: newLuminosity } },
 					newRgbValue = convertHslToRgb(adjustedHslValue),
 					newHexValue = convertRgbToHex(newRgbValue);
 
@@ -79,7 +79,16 @@ export default function ColorFieldset({ hexValue, updateHexValue, type }) {
 			</div>
 
       <label className={labelClass} htmlFor={lightnessId}>Lightness</label>
-      <input className={inputClass} id={lightnessId} value={hslValue.l} min="0" max="100" onChange={updateLightness} step="1" type="range" />
+      <input 
+				className={inputClass}
+				id={lightnessId}
+				value={hslValue.l}
+				min="0"
+				max="100"
+				onChange={updateLightness} 
+				step="1"
+				type="range"
+			/>
       <div className={lightnessGradientClass} style={style} />
     </fieldset>
   );

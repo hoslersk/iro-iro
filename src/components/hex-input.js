@@ -23,7 +23,7 @@ export default function HexInput({ hasError, hexValue, id, onChange, value }) {
         onChange={onChange}
         required
         type="text"
-        value={value}
+        value={hexValue || value}
         size="7"
       />
       <span className={helpTextClass}>
