@@ -9,7 +9,7 @@ import './card.scss';
 
 // @TODO: Add easter eggs when clicking on mock buttons
 export default function Card({ actions = [], children, label = 'Color Contrast Tool' }) {
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized/*, setIsMinimized*/] = useState(false);
 
   const componentClass = classNames(
     'card',
@@ -25,7 +25,7 @@ export default function Card({ actions = [], children, label = 'Color Contrast T
           <div className="card__mock-button card__mock-button--close">
             <FontAwesomeIcon className="card__icon" icon={faTimes} />
           </div>
-          <div className="card__mock-button card__mock-button--minimize" onClick={() => setIsMinimized(true)}>
+          <div className="card__mock-button card__mock-button--minimize">
             <FontAwesomeIcon className="card__icon" icon={faMinus} />
           </div>
           <div className="card__mock-button card__mock-button--maximize">
